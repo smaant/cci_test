@@ -1,0 +1,24 @@
+version: 2
+executorType: docker
+debug: true
+containerInfo:
+  - image: alpine:3.4
+    cmd: ["sh"]
+  - image: mongo:2.6.9
+    cmd: ["--smallfiles"]
+jobs:
+  build:
+    cpu: 0.1
+    ram: 100
+    steps:
+      - type: shell
+        shell: sh
+        pwd: /
+        command: sleep 20
+      
+      - type: shell
+        shell: sh
+        pwd: /
+        command: telnet 127.0.0.1 27017
+      
+
