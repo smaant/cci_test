@@ -14,7 +14,7 @@ jobs:
       - type: shell
         shell: sh
         pwd: /
-        command: sleep 20
+        command: sleep 21
       
       - type: shell
         shell: sh
