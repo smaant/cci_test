@@ -4,7 +4,7 @@ containerInfo:
   - image: alpine:3.4
     cmd: ["sh"]
     env:
-      - SOME_VAR: root
+      - SOME_VAR=root
 jobs:
   build:
     steps:
