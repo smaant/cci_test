@@ -11,4 +11,4 @@ jobs:
     steps:
       - run:
           shell: /bin/sh
-          command: env          
+          command: echo $SOME_VAR
