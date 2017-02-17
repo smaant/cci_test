@@ -1,0 +1,14 @@
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: alpine:3.5
+        command: [sh]
+        environment:
+          SOME_VAR: root
+
+    working_directory: /
+    steps:
+      - run:
+          shell: /bin/sh
+          command: env          
