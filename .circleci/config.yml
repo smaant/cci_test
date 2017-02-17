@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: alpine:3.5
-        command: [sh]
+        cmd: [sh]
         environment:
           SOME_VAR: root
 
