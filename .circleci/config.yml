@@ -1,6 +1,6 @@
 version: 2.0
 jobs:
-  build:
+  _build:
     docker:
       - image: alpine:3.5
         cmd: [sh]
