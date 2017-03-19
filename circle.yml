@@ -8,6 +8,10 @@ containerInfo:
     cmd: ["--smallfiles"]
 jobs:
   build:
+    branches:
+      ignore:
+        - dev
+
     cpu: 0.1
     ram: 100
     steps:
