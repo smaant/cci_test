@@ -3,7 +3,7 @@ jobs:
   build:
     branches:
       only:
-        - new-config2
+        - new-config
 #      ignore:
 #        - new-config
     docker:
