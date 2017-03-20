@@ -12,6 +12,12 @@ jobs:
       - type: shell
         command: |
           docker build -t smaantci/test-ci .
+
+      - type: shell
+        command: |
           docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
+      - type: shell
+        command: |
           docker push smaantci/test-ci
       
