@@ -1,6 +1,9 @@
 version: 2.0
 jobs:
-  _build:
+  build:
+    branches:
+      ignore:
+        - new-config
     docker:
       - image: alpine:3.5
         cmd: [sh]
