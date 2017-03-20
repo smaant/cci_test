@@ -1,28 +1,17 @@
 version: 2
 executorType: docker
-debug: true
 containerInfo:
-  - image: alpine:3.4
-    cmd: ["sh"]
-  - image: mongo:2.6.9
-    cmd: ["--smallfiles"]
+  - image: docker:17.03.0-ce-git
 jobs:
   build:
-    branches:
-      ignore:
-        - dev
-
-    cpu: 0.1
-    ram: 100
+    workDir: ~/src
     steps:
-      - type: shell
-        shell: sh
-        pwd: /
-        command: sssdfsdf
-      
-      - type: shell
-        shell: sh
-        pwd: /
-        command: telnet 127.0.0.1 27017
-      
+      - checkout
+      - setup_docker_engine
 
+      - type: shell
+        command: |
+          docker build -t smaantci/test-ci .
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+          docker push smaantci/test-ci
+      
