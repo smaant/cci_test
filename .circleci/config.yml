@@ -3,9 +3,9 @@ jobs:
   build:
     branches:
       only:
-        - new-config
-      ignore:
-        - new-config
+        - new-config2
+#      ignore:
+#        - new-config
     docker:
       - image: alpine:3.5
         cmd: [sh]
