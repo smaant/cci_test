@@ -1,0 +1,8 @@
+version: '2'
+services:
+  db:
+    image: mysql:5.7.7
+    expose:
+        - '3306'
+    ports:
+        - "3306:3306"
