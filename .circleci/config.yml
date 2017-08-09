@@ -1,35 +1,29 @@
 version: 2
-build_agent: picard:0.0.2956-f29406a
 jobs:
   build:
+    parallelism: 4
+
     docker:
-      - image: alpine:3.4
+      - image: docker:17.07.0-ce
 
-      - image: golang:1.8
-        name: go
-
-      - image: postgres:alpine
-        environment:
-          POSTGRES_DB: db
-          POSTGRES_USER: root
-          POSTGRES_PASSWORD:
-        name: postgres
-
-    working_directory: /circleci/src
+    working_directory: /
 
     steps:
-      - checkout
+      - setup_docker_engine:
+          docker_layer_caching: true
+
+      - run: docker version && echo && docker ps
 
       - run:
-          command: sleep 5 && psql -U root db < sql/init.sql
-          container: postgres
+          command: docker run -it ubuntu:16.04 bash -c "while true; do echo `date` && sleep 1; done"
+          background: true
 
       - run:
-          command: psql -U root db -c "select * from test;"
-          container: postgres
+          command: docker run -it jmalloc/echo-server
+          background: true
 
       - run:
-          command: go build main.go
-          container: go
+          command: docker run -d postgres
+          background: true
 
-      - run: ./main
+      - run: sleep 50
